@@ -1,5 +1,9 @@
 const schedule = require('node-schedule')
 const scheduleService = require('../services/schedule')
+const reqlib = require('app-root-path').require
+const sendMail = require('../common/email')
+const config = reqlib('/config/index')
+const emailUtil = require('../util/emailUntil')
 /**
  * cron风格的
  *    *    *    *    *    *
@@ -20,7 +24,12 @@ rule.hour = [7]
 rule.minute = 0
 
 function sayHello() {
-  scheduleService.getSchedule('sayHello').then(() => {
+  scheduleService.getSchedule('sayHello').then((data) => {
+    if (data.open === 'open') {
+      sendMail(emailUtil.sayHello({
+        userEmail: config.email.adminAccount.user
+      }))
+    }
   })
 }
 

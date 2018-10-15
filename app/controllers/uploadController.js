@@ -1,10 +1,20 @@
 const fs = require('fs-extra')
 const del = require('del')
 
+/**
+ * 获取文件地址
+ * @param ctx
+ * @returns {string}
+ */
 function getFilePath (ctx) {
   return `${ctx.localConfig.uploadDir}/${ctx.req.file.filename}`
 }
 
+/**
+ * 导入数字
+ * @param ctx
+ * @returns {Promise<void>}
+ */
 exports.importNumbers = async function (ctx) {
   // 获取上传数据
   const filePath = getFilePath(ctx)

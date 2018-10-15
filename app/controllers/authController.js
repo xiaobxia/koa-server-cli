@@ -7,9 +7,9 @@ exports.login = async function (ctx) {
   const query = ctx.request.body
   try {
     const data = ctx.validateData({
-      account: {type: 'string', required: true},
-      password: {type: 'string', required: true},
-      platform: {type: 'string', required: true, include: ['mobile', 'pc']}
+      account: {required: true, type: 'string'},
+      password: {required: true, type: 'string'},
+      platform: {required: true, type: 'string'}
     }, query)
     const userRaw = await ctx.services.auth.login(data.account, data.password)
     const user = {
@@ -70,8 +70,8 @@ exports.logout = async function (ctx) {
   const query = ctx.query
   try {
     const data = ctx.validateData({
-      token: {type: 'string', required: false},
-      platform: {type: 'string', required: true, include: ['mobile', 'pc']}
+      token: {required: false, type: 'string'},
+      platform: {required: true, type: 'string'}
     }, query)
     const tokenRaw = ctx.token.verify(data.token)
     const userRaw = await ctx.services.user.getUserByName(tokenRaw.name)

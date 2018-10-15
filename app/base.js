@@ -50,6 +50,16 @@ module.exports = function (app) {
       data: data || null
     }
   }
+  //过滤请求字段
+  content.queryDataFilter = function (rawData, filterKey) {
+    let newData = {}
+    for (let key in rawData) {
+      if (filterKey !== key) {
+        newData[key] = rawData[key]
+      }
+    }
+    return rawData
+  }
   // 接口参数验证
   content.validateData = function (rule, data) {
     let fake = {}

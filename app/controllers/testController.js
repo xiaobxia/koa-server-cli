@@ -1,7 +1,7 @@
 const reqlib = require('app-root-path').require
 const sendMail = require('../common/email')
 const config = reqlib('/config/index')
-const emailTemplate = require('../const/emailTemplate')
+const emailUtil = require('../util/emailUntil')
 
 /**
  * 发送测试邮件
@@ -10,7 +10,7 @@ const emailTemplate = require('../const/emailTemplate')
  */
 exports.testEmail = async function (ctx) {
   try {
-    await sendMail(emailTemplate.sayHello({
+    await sendMail(emailUtil.sayHello({
       userEmail: config.email.adminAccount.user
     }))
     ctx.body = ctx.resuccess()

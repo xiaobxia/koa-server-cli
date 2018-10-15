@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2017/7/20.
- */
 exports.clone = function (target, filterFun) {
   let tempData = {}
   for (let key in target) {

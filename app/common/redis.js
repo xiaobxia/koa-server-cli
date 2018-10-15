@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2018/3/13.
- */
 const redis = require('redis')
 const bluebird = require('bluebird')
 bluebird.promisifyAll(redis.RedisClient.prototype)

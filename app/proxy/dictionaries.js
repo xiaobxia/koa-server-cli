@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2018/3/29.
- */
 const models = require('../models')
 
 const DictionariesModel = models.Dictionaries

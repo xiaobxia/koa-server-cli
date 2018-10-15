@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2018/1/23.
- */
 const Proxy = require('../proxy')
 const UserProxy = Proxy.User
 exports.login = async function (account, password) {

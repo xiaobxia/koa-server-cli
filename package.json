@@ -10,9 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "delete": "pm2 delete service-base"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": ["lint"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiaobxia/service-base.git"

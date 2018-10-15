@@ -1,8 +1,4 @@
 /**
- * Created by xiaobxia on 2018/3/6.
- */
-
-/**
  * 添加定时任务
  * @param ctx
  * @returns {Promise.<void>}

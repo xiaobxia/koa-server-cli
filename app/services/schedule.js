@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2018/3/6.
- */
 const Proxy = require('../proxy')
 
 const DictionariesProxy = Proxy.Dictionaries

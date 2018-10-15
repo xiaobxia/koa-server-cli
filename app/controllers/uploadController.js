@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2018/4/1.
- */
 const fs = require('fs-extra')
 const del = require('del')
 

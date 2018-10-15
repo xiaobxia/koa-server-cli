@@ -52,17 +52,6 @@ router.post('/schedule/changeScheduleStatus', controllers.scheduleController.cha
 router.get('/schedule/getSchedules', controllers.scheduleController.getSchedules)
 router.get('/schedule/getScheduleValue', controllers.scheduleController.getScheduleValue)
 
-router.get('/schedule/verifyOpening', controllers.fundScheduleController.verifyOpening)
-router.get('/schedule/updateBaseInfo', controllers.fundScheduleController.updateBaseInfo)
-router.get('/schedule/updateValuation', controllers.fundScheduleController.updateValuation)
-router.get('/schedule/updateRate', controllers.fundScheduleController.updateRate)
-router.get('/schedule/updateRecentNetValue', controllers.fundScheduleController.updateRecentNetValue)
-router.get('/schedule/betterValuation', controllers.fundScheduleController.betterValuation)
-router.get('/schedule/addRecentNetValue', controllers.fundScheduleController.addRecentNetValue)
-router.get('/schedule/deleteUnSellFund', controllers.fundScheduleController.deleteUnSellFund)
-router.post('/schedule/updateLowRateFund', controllers.fundScheduleController.updateLowRateFund)
-router.post('/schedule/deleteHighRateFund', controllers.fundScheduleController.deleteHighRateFund)
-
 /**
  * 测试
  */

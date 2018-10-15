@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2018/1/25.
- */
 const Proxy = require('../proxy')
 const UserProxy = Proxy.User
 

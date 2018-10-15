@@ -45,12 +45,12 @@ router.post('/download/exportNumbers', controllers.exportController.exportNumber
 /**
  * 定时任务模块
  */
-router.post('/schedule/addSchedule', controllers.scheduleController.addSchedule)
-router.get('/schedule/deleteSchedule', controllers.scheduleController.deleteSchedule)
-router.post('/schedule/updateSchedule', controllers.scheduleController.updateSchedule)
-router.post('/schedule/changeScheduleStatus', controllers.scheduleController.changeScheduleStatus)
-router.get('/schedule/getSchedules', controllers.scheduleController.getSchedules)
-router.get('/schedule/getScheduleValue', controllers.scheduleController.getScheduleValue)
+router.post('/schedule/add', controllers.scheduleController.addSchedule)
+router.get('/schedule/delete', controllers.scheduleController.deleteSchedule)
+router.post('/schedule/update', controllers.scheduleController.updateSchedule)
+router.post('/schedule/changeStatus', controllers.scheduleController.changeScheduleStatus)
+router.get('/schedule/all', controllers.scheduleController.getSchedules)
+router.get('/schedule/one', controllers.scheduleController.getSchedule)
 
 /**
  * 测试

@@ -1,4 +1,5 @@
 const Proxy = require('../proxy')
+
 const Dictionaries = Proxy.Dictionaries
 
 /**

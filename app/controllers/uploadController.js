@@ -1,9 +1,13 @@
 const fs = require('fs-extra')
 const del = require('del')
 
+function getFilePath (ctx) {
+  return `${ctx.localConfig.uploadDir}/${ctx.req.file.filename}`
+}
+
 exports.importNumbers = async function (ctx) {
   // 获取上传数据
-  const filePath = `${ctx.localConfig.uploadDir}/${ctx.req.file.filename}`
+  const filePath = getFilePath(ctx)
   const data = await fs.readJson(filePath)
   try {
     console.log(data.list)

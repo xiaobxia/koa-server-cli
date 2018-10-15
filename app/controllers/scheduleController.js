@@ -103,17 +103,15 @@ exports.getSchedules = async function (ctx) {
   }
 }
 
-exports.getScheduleopen = async function (ctx) {
+exports.getSchedule = async function (ctx) {
   const query = ctx.query
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
       name: {type: 'string', required: true}
     }, query)
-    const open = await scheduleService.getSchedule(data.name)
-    ctx.body = ctx.resuccess({
-      open
-    })
+    const schdule = await scheduleService.getSchedule(data.name)
+    ctx.body = ctx.resuccess(schdule)
   } catch (err) {
     ctx.body = ctx.refail(err)
   }

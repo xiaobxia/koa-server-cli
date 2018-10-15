@@ -1,5 +1,6 @@
 const Proxy = require('../proxy')
 const UserProxy = Proxy.User
+
 exports.login = async function (account, password) {
   const user = await UserProxy.findOne({ name: account })
   if (!user) {

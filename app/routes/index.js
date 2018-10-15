@@ -35,7 +35,7 @@ router.get('/auth/logout', controllers.authController.logout)
 /**
  * 文件上传模块
  */
-router.post('/upload/importFund', upload.single('fundFile'), controllers.uploadController.importFunds)
+router.post('/upload/importNumbers', upload.single('numberFile'), controllers.uploadController.importNumbers)
 
 /**
  * 文件下载模块

@@ -1,3 +1,8 @@
+/**
+ * 导出数字
+ * @param ctx
+ * @returns {Promise<void>}
+ */
 exports.exportNumbers = async function (ctx) {
   try {
     let list = []

@@ -8,9 +8,10 @@ exports.addSchedule = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      key: {type: 'string', required: true},
+      name: {type: 'string', required: true},
       describe: {type: 'string', required: true},
-      value: {required: true, include: ['open', 'close']}
+      open: {required: true, include: ['open', 'close']},
+      type: {type: 'string', required: false}
     }, query)
     // 添加任务
     await scheduleService.addSchedule(data)
@@ -30,9 +31,9 @@ exports.deleteSchedule = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      key: {type: 'string', required: true}
+      name: {type: 'string', required: true}
     }, query)
-    await scheduleService.deleteSchedule(data.key)
+    await scheduleService.deleteSchedule(data.name)
     ctx.body = ctx.resuccess()
   } catch (err) {
     ctx.body = ctx.refail(err)
@@ -49,13 +50,14 @@ exports.updateSchedule = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      key: {type: 'string', required: true},
+      name: {type: 'string', required: true},
       describe: {required: true},
-      value: {required: true, include: ['open', 'close']}
+      open: {required: true, include: ['open', 'close']},
+      type: {type: 'string', required: false}
     }, query)
-    await scheduleService.updateSchedule(data.key, {
+    await scheduleService.updateSchedule(data.name, {
       describe: data.describe,
-      value: data.value
+      open: data.open
     })
     ctx.body = ctx.resuccess()
   } catch (err) {
@@ -73,11 +75,11 @@ exports.changeScheduleStatus = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      key: {type: 'string', required: true},
-      value: {required: true, include: ['open', 'close']}
+      name: {type: 'string', required: true},
+      open: {required: true, include: ['open', 'close']}
     }, query)
-    await scheduleService.updateSchedule(data.key, {
-      value: data.value
+    await scheduleService.updateSchedule(data.name, {
+      open: data.open
     })
     ctx.body = ctx.resuccess()
   } catch (err) {
@@ -101,16 +103,16 @@ exports.getSchedules = async function (ctx) {
   }
 }
 
-exports.getScheduleValue = async function (ctx) {
+exports.getScheduleopen = async function (ctx) {
   const query = ctx.query
-  const dictionariesService = ctx.services.dictionaries
+  const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      key: {type: 'string', required: true}
+      name: {type: 'string', required: true}
     }, query)
-    const value = await dictionariesService.getByKey(data.key)
+    const open = await scheduleService.getSchedule(data.name)
     ctx.body = ctx.resuccess({
-      value
+      open
     })
   } catch (err) {
     ctx.body = ctx.refail(err)

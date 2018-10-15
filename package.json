@@ -1,0 +1,40 @@
+{
+  "name": "service-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --fix .",
+    "dev": "cross-env NODE_ENV=dev nodemon --inspect --debug-port=9220 ./app.js",
+    "prod": "cross-env NODE_ENV=prod pm2 start ./app.js --name=service-base",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "delete": "pm2 delete service-base"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaobxia/service-base.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaobxia/service-base/issues"
+  },
+  "homepage": "https://github.com/xiaobxia/service-base#readme",
+  "dependencies": {
+    "app-root-path": "^2.1.0",
+    "log4js": "^3.0.6",
+    "mongoose": "^5.3.3",
+    "nodemailer": "^4.6.8",
+    "qiniu": "^7.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "nodemon": "^1.18.4",
+    "pm2": "^3.2.2",
+    "pre-commit": "^1.2.2"
+  }
+}

@@ -1,0 +1,5 @@
+exports.authController = require('./authController')
+exports.scheduleController = require('./scheduleController')
+exports.uploadController = require('./uploadController')
+exports.exportController = require('./exportController')
+exports.testController = require('./testController')

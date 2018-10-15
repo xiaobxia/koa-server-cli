@@ -15,10 +15,10 @@ exports.login = async function (ctx) {
     const user = {
       name: userRaw.name
     }
-    //登录在线时间
+    // 登录在线时间
     const keepDay = 7
     const token = ctx.token.sign(user, 60 * 60 * 24 * keepDay)
-    //添加登录日志
+    // 添加登录日志
     ctx.services.log.addLogAudit({
       log_type: 'login',
       platform: data.platform,
@@ -75,7 +75,7 @@ exports.logout = async function (ctx) {
     }, query)
     const tokenRaw = ctx.token.verify(data.token)
     const userRaw = await ctx.services.user.getUserByName(tokenRaw.name)
-    //添加退出登录日志
+    // 添加退出登录日志
     ctx.services.log.addLogAudit({
       log_type: 'logout',
       platform: data.platform,

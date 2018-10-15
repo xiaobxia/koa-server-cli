@@ -20,16 +20,17 @@ const codeMap = {
 }
 
 module.exports = function (app) {
+  const content = app.context
   // 配置
-  app.context.localConfig = localConfig
+  content.localConfig = localConfig
   // 常量
-  app.context.localConst = localConst
+  content.localConst = localConst
   // 日志
-  app.context.logger = logger
+  content.logger = logger
   // 发邮件
-  app.context.sendMail = sendMail
+  content.sendMail = sendMail
   // 成功
-  app.context.resuccess = function (data) {
+  content.resuccess = function (data) {
     return {
       code: 200,
       success: true,
@@ -38,7 +39,7 @@ module.exports = function (app) {
     }
   }
   // 失败
-  app.context.refail = function (err, data) {
+  content.refail = function (err, data) {
     logger.warn(err)
     const message = err.message
     const code = err.code || '-1'
@@ -50,7 +51,7 @@ module.exports = function (app) {
     }
   }
   // 接口参数验证
-  app.context.validateData = function (rule, data) {
+  content.validateData = function (rule, data) {
     let fake = {}
     for (let key in rule) {
       if (rule.hasOwnProperty(key)) {
@@ -77,29 +78,29 @@ module.exports = function (app) {
     }
   }
   // token
-  app.context.token = {}
+  content.token = {}
   // token注册
-  app.context.token.sign = function (data, expiresIn) {
+  content.token.sign = function (data, expiresIn) {
     const tokenConfig = localConfig.server.token
     return jwt.sign(data, tokenConfig.key, {expiresIn: expiresIn || tokenConfig.expiresIn})
   }
   // token验证
-  app.context.token.verify = function (token) {
+  content.token.verify = function (token) {
     const tokenConfig = localConfig.server.token
     return jwt.verify(token, tokenConfig.key)
   }
 
-  app.context.services = services
+  content.services = services
   // 创建json文件
-  app.context.createJsonFile = function (fileName, fileData) {
+  content.createJsonFile = function (fileName, fileData) {
     return fs.ensureFile(fileName).then(() => {
       return fs.writeJson(fileName, fileData, {spaces: 2})
     })
   }
   // 定时任务
-  app.context.schedules = schedules
+  content.schedules = schedules
   // 分页
-  app.context.paging = function(current, pageSize, defaultValue) {
+  content.paging = function(current, pageSize, defaultValue) {
     let defaultCurrent = 1,
       defaultPageSize = 10
     if (defaultValue) {

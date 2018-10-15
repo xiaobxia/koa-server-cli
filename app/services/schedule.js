@@ -45,6 +45,15 @@ exports.updateSchedule = async function (name, data) {
 }
 
 /**
+ * 获取单个定时任务
+ * @param name
+ * @returns {Promise<*>}
+ */
+exports.getSchedule = async function (name) {
+  return ScheduleProxy.findOne({name})
+}
+
+/**
  * 获取所有定时任务
  * @returns {Promise<*>}
  */

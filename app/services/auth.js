@@ -1,6 +1,13 @@
 const Proxy = require('../proxy')
+
 const UserProxy = Proxy.User
 
+/**
+ * 登录
+ * @param account
+ * @param password
+ * @returns {Promise<void>}
+ */
 exports.login = async function (account, password) {
   const user = await UserProxy.findOne({ name: account })
   if (!user) {

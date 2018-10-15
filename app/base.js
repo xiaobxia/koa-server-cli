@@ -9,7 +9,7 @@ const fs = require('fs-extra')
 const Parameter = require('./lib/validate')
 const schedules = require('./schedules/inedx')
 
-const p = new Parameter()
+const parameter = new Parameter()
 
 const codeMap = {
   '-1': 'fail',
@@ -20,8 +20,11 @@ const codeMap = {
 }
 
 module.exports = function (app) {
+  // 配置
   app.context.localConfig = localConfig
+  // 常量
   app.context.localConst = localConst
+  // 日志
   app.context.logger = logger
   // 发邮件
   app.context.sendMail = sendMail
@@ -46,7 +49,7 @@ module.exports = function (app) {
       data: data || null
     }
   }
-  // 接口
+  // 接口参数验证
   app.context.validateData = function (rule, data) {
     let fake = {}
     for (let key in rule) {
@@ -63,7 +66,7 @@ module.exports = function (app) {
         }
       }
     }
-    let msgList = p.validate(rule, fake)
+    let msgList = parameter.validate(rule, fake)
     if (msgList !== undefined) {
       let msg = msgList[0]
       let err = new Error(msg.field + ' ' + msg.message)
@@ -73,27 +76,29 @@ module.exports = function (app) {
       return fake
     }
   }
+  // token
   app.context.token = {}
+  // token注册
   app.context.token.sign = function (data, expiresIn) {
     const tokenConfig = localConfig.server.token
     return jwt.sign(data, tokenConfig.key, {expiresIn: expiresIn || tokenConfig.expiresIn})
   }
-
+  // token验证
   app.context.token.verify = function (token) {
     const tokenConfig = localConfig.server.token
     return jwt.verify(token, tokenConfig.key)
   }
 
   app.context.services = services
-
+  // 创建json文件
   app.context.createJsonFile = function (fileName, fileData) {
     return fs.ensureFile(fileName).then(() => {
       return fs.writeJson(fileName, fileData, {spaces: 2})
     })
   }
-
+  // 定时任务
   app.context.schedules = schedules
-
+  // 分页
   app.context.paging = function(current, pageSize, defaultValue) {
     let defaultCurrent = 1,
       defaultPageSize = 10

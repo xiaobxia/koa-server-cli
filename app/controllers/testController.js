@@ -5,10 +5,8 @@ const emailTemplate = require('../const/emailTemplate')
 
 exports.testEmail = async function (ctx) {
   try {
-    await sendMail(emailTemplate.verifyOpeningSuccessTemplate({
-      sender: config.email.senderAccount.auth.user,
-      userEmail: config.email.adminAccount.user,
-      openMsg: '开盘'
+    await sendMail(emailTemplate.registerVerifyTemplate({
+      userEmail: config.email.adminAccount.user
     }))
     ctx.body = ctx.resuccess()
   } catch (err) {

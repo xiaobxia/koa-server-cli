@@ -40,7 +40,7 @@ router.post('/upload/importFund', upload.single('fundFile'), controllers.uploadC
 /**
  * 文件下载模块
  */
-router.post('/download/exportMyFund', controllers.exportController.exportMyFunds)
+router.post('/download/exportNumbers', controllers.exportController.exportNumbers)
 
 /**
  * 定时任务模块

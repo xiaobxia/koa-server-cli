@@ -10,7 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "delete": "pm2 delete service-base"
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiaobxia/service-base.git"
@@ -23,6 +25,12 @@
   "homepage": "https://github.com/xiaobxia/service-base#readme",
   "dependencies": {
     "app-root-path": "^2.1.0",
+    "bluebird": "^3.5.2",
+    "fs-extra": "^7.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "^0.0.16",
     "log4js": "^3.0.6",
     "mongoose": "^5.3.3",
     "nodemailer": "^4.6.8",

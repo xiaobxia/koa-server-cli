@@ -18,7 +18,7 @@ const schema = new Schema({
   }
 })
 
-schema.index({key: 1}, {unique: true})
+schema.index({name: 1}, {unique: true})
 schema.index({create_at: -1})
 
-module.exports =  mongoose.model('Dictionaries', schema)
+module.exports =  mongoose.model('Schedule', schema)

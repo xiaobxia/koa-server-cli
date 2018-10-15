@@ -1,59 +1,62 @@
 const Proxy = require('../proxy')
 
-const DictionariesProxy = Proxy.Dictionaries
+const ScheduleProxy = Proxy.Schedule
 
 /**
  * 添加定时任务
+ * @param data
+ * @returns {Promise<*>}
  */
 exports.addSchedule = async function (data) {
-  const schedule = await DictionariesProxy.check({key: data.key})
+  const schedule = await ScheduleProxy.check({name: data.name})
   if (schedule) {
     throw new Error('定时任务已存在')
   }
-  return DictionariesProxy.newAndSave({
-    type: 'schedule',
+  return ScheduleProxy.newAndSave({
     ...data
   })
 }
 
 /**
  * 删除定时任务
+ * @param name
+ * @returns {Promise<*>}
  */
-exports.deleteSchedule = async function (key) {
-  const schedule = await DictionariesProxy.check({key})
+exports.deleteSchedule = async function (name) {
+  const schedule = await ScheduleProxy.check({name})
   if (!schedule) {
     throw new Error('定时任务不存在')
   }
-  return DictionariesProxy.delete({key})
+  return ScheduleProxy.delete({name})
 }
 
 /**
  * 更新定时任务
+ * @param name
+ * @param data
+ * @returns {Promise<*>}
  */
-exports.updateSchedule = async function (key, data) {
-  const schedule = await DictionariesProxy.check({key})
+exports.updateSchedule = async function (name, data) {
+  const schedule = await ScheduleProxy.check({name})
   if (!schedule) {
     throw new Error('定时任务不存在')
   }
-  return DictionariesProxy.update({key}, data)
-}
-
-/**
- * 获取单个定时任务
- */
-exports.getSchedule = async function (key) {
-  return DictionariesProxy.findOne({type: 'schedule', key})
+  return ScheduleProxy.update({name}, data)
 }
 
 /**
  * 获取所有定时任务
+ * @returns {Promise<*>}
  */
 exports.getSchedules = async function () {
-  return DictionariesProxy.find({type: 'schedule'})
+  return ScheduleProxy.find({})
 }
 
 /**
  * 分页获取定时任务
+ * @param query
+ * @param paging
+ * @returns {Promise<{list: any, count: any}>}
  */
 exports.getSchedulesByPaging = async function (query, paging) {
   const opt = {
@@ -61,7 +64,10 @@ exports.getSchedulesByPaging = async function (query, paging) {
     limit: paging.offset,
     sort: '-create_at'
   }
-  const queryOption = {type: 'schedule'}
-  const data = await Promise.all([DictionariesProxy.find(queryOption, opt), DictionariesProxy.count(queryOption)])
+  const queryOption = {}
+  const data = await Promise.all([
+    ScheduleProxy.find(queryOption, opt),
+    ScheduleProxy.count(queryOption)
+  ])
   return {list: data[0], count: data[1]}
 }

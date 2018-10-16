@@ -1,6 +1,3 @@
-/**
- * Created by xiaobxia on 2017/7/26.
- */
 const path = require('path')
 const env = process.env.NODE_ENV
 const isDev = env === 'dev'
@@ -12,7 +9,7 @@ function resolveRoot(dir) {
 module.exports = {
   root: path.resolve(__dirname, '../'),
   project: {
-    projectName: "myService"
+    projectName: "service-base"
   },
   server: {
     port: 3002,
@@ -29,7 +26,7 @@ module.exports = {
   },
   uploadDir: 'uploads',
   // 阿里云2，用于测试
-  db: 'mongodb://47.92.210.171:27017/myServiceV2',
+  db: 'mongodb://47.92.210.171:27017/service-base',
   qiniu: {
     zone: 'Zone_z2'
   },

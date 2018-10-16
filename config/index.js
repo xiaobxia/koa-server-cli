@@ -3,13 +3,13 @@ const env = process.env.NODE_ENV
 const isDev = env === 'dev'
 
 const root = path.resolve(__dirname, '../')
-function resolveRoot(dir) {
+function resolveRoot (dir) {
   return path.resolve(root, dir)
 }
 module.exports = {
   root: path.resolve(__dirname, '../'),
   project: {
-    projectName: "service-base"
+    projectName: 'service-base'
   },
   server: {
     port: 3002,
@@ -42,7 +42,7 @@ module.exports = {
         user: 'chenlingjie@cd121.com',
         pass: 'CLJclj214'
       },
-      ignoreTLS: true,
+      ignoreTLS: true
     },
     adminAccount: {
       user: '673806687@qq.com'

@@ -8,14 +8,14 @@ const UserProxy = Proxy.User
  * @returns {Promise<*>}
  */
 exports.newPassword = async function (data) {
-  const user = await UserProxy.findOne({name: data.name})
+  const user = await UserProxy.findOne({ name: data.name })
   if (!user) {
     throw new Error('用户不存在')
   }
   if (user.password !== data.oldPassword) {
     throw new Error('账户名或密码不正确')
   }
-  return UserProxy.update({name: data.name}, {
+  return UserProxy.update({ name: data.name }, {
     password: data.newPassword
   })
 }
@@ -26,7 +26,7 @@ exports.newPassword = async function (data) {
  * @returns {Promise<void>}
  */
 exports.getUserByName = async function (name) {
-  const user = await UserProxy.findOne({name})
+  const user = await UserProxy.findOne({ name })
   if (!user) {
     throw new Error('用户不存在')
   }

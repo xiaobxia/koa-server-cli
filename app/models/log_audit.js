@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId
 
 const schema = new Schema({
   log_type: String,
-  user_id: {type: ObjectId},
+  user_id: { type: ObjectId },
   user_name: String,
   platform: String,
   create_at: {

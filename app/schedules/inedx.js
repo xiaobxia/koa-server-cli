@@ -3,4 +3,3 @@ const isDev = env === 'dev'
 if (!isDev) {
   exports.sayHello = require('./sayHello')
 }
-

@@ -7,7 +7,7 @@ const sender = emailConfig.senderAccount.auth.user
 const formName = emailConfig.formName
 const adminEmail = emailConfig.adminAccount.user
 
-function renderEmail(file, data) {
+function renderEmail (file, data) {
   return pug.renderFile(`../emailTemplate/${file}.pug`, data || {})
 }
 

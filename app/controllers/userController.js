@@ -8,8 +8,8 @@ exports.newPassword = async function (ctx) {
   try {
     const tokenRaw = ctx.tokenRaw
     const data = ctx.validateData({
-      oldPassword: {required: true, type: 'string'},
-      newPassword: {required: true, type: 'string'}
+      oldPassword: { required: true, type: 'string' },
+      newPassword: { required: true, type: 'string' }
     }, query)
     const userRaw = await ctx.services.user.getUserByName(tokenRaw.name)
     await ctx.services.user.newPassword({

@@ -19,11 +19,11 @@ log4js.configure({
       // filename: path.resolve(loggerConfig.dir, loggerConfig.fileName),
       // encoding: 'utf-8'
     },
-    console: {type: 'console'}
+    console: { type: 'console' }
   },
   categories: {
-    default: {appenders: ['console'], level: loggerConfig.debugLogLevel},
-    prod: {appenders: ['file'], level: loggerConfig.productLogLevel}
+    default: { appenders: ['console'], level: loggerConfig.debugLogLevel },
+    prod: { appenders: ['file'], level: loggerConfig.productLogLevel }
   },
   pm2: !isDev
 })

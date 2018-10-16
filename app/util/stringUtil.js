@@ -4,7 +4,7 @@ module.exports = {
    * @param str
    * @returns {string}
    */
-  hyphenToCamelCase(str) {
+  hyphenToCamelCase (str) {
     let strArr = str.split('_')
     strArr[0] = strArr[0].toLowerCase()
     for (let i = 1, len2 = strArr.length; i < len2; i++) {
@@ -18,7 +18,7 @@ module.exports = {
    * @param str
    * @returns {string}
    */
-  camelCaseToHyphen(str) {
-    return str.replace(/([A-Z])/g, "_$1").toLowerCase()
+  camelCaseToHyphen (str) {
+    return str.replace(/([A-Z])/g, '_$1').toLowerCase()
   }
 }

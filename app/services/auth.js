@@ -9,7 +9,7 @@ const UserProxy = Proxy.User
  * @returns {Promise<void>}
  */
 exports.login = async function (account, password) {
-  const user = await UserProxy.findOne({name: account})
+  const user = await UserProxy.findOne({ name: account })
   if (!user) {
     throw new Error('用户不存在')
   }
@@ -27,7 +27,7 @@ exports.login = async function (account, password) {
  * @returns {Promise<*>}
  */
 exports.register = async function (data) {
-  const user = await UserProxy.findOne({name: data.name})
+  const user = await UserProxy.findOne({ name: data.name })
   if (user) {
     throw new Error('用户名已存在')
   }

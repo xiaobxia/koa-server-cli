@@ -30,5 +30,3 @@ exports.importNumbers = async function (ctx) {
     del(filePath)
   }
 }
-
-

@@ -24,6 +24,6 @@ const schema = new Schema({
 })
 // 1升序，-1降序。比如积分一般在排序时越大的在越前面，所以用降序
 // 名字不重复
-schema.index({name: 1}, { unique: true })
+schema.index({ name: 1 }, { unique: true })
 
 module.exports = mongoose.model('User', schema)

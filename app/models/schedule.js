@@ -18,7 +18,7 @@ const schema = new Schema({
   }
 })
 
-schema.index({name: 1}, {unique: true})
-schema.index({create_at: -1})
+schema.index({ name: 1 }, { unique: true })
+schema.index({ create_at: -1 })
 
-module.exports =  mongoose.model('Schedule', schema)
+module.exports = mongoose.model('Schedule', schema)

@@ -8,5 +8,5 @@ const Dictionaries = Proxy.Dictionaries
  * @returns {Promise.<void>}
  */
 exports.getByKey = async function (key) {
-  return Dictionaries.findOne({key})
+  return Dictionaries.findOne({ key })
 }

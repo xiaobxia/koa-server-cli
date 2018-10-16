@@ -23,7 +23,7 @@ rule.dayOfWeek = [new schedule.Range(1, 5)]
 rule.hour = [7]
 rule.minute = 0
 
-function sayHello() {
+function sayHello () {
   scheduleService.getSchedule('sayHello').then((data) => {
     if (data.open === 'open') {
       sendMail(emailUtil.sayHello({

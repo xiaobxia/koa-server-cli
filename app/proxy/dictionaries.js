@@ -42,4 +42,3 @@ exports.check = function (query, opt) {
 exports.count = function (query) {
   return DictionariesModel.count(query)
 }
-

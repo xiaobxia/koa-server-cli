@@ -7,10 +7,10 @@ exports.register = async function (ctx) {
   const query = ctx.request.body
   try {
     const data = ctx.validateData({
-      name: {required: true, type: 'string'},
-      password: {required: true, type: 'string'},
-      email: {required: true, type: 'string'},
-      platform: {required: true, type: 'string'}
+      name: { required: true, type: 'string' },
+      password: { required: true, type: 'string' },
+      email: { required: true, type: 'string' },
+      platform: { required: true, type: 'string' }
     }, query)
     const userRaw = await ctx.services.auth.register(ctx.queryDataFilter(data, 'platform'))
     const user = {
@@ -44,9 +44,9 @@ exports.login = async function (ctx) {
   const query = ctx.request.body
   try {
     const data = ctx.validateData({
-      account: {required: true, type: 'string'},
-      password: {required: true, type: 'string'},
-      platform: {required: true, type: 'string'}
+      account: { required: true, type: 'string' },
+      password: { required: true, type: 'string' },
+      platform: { required: true, type: 'string' }
     }, query)
     const userRaw = await ctx.services.auth.login(data.account, data.password)
     const user = {
@@ -107,8 +107,8 @@ exports.logout = async function (ctx) {
   const query = ctx.query
   try {
     const data = ctx.validateData({
-      token: {required: false, type: 'string'},
-      platform: {required: true, type: 'string'}
+      token: { required: false, type: 'string' },
+      platform: { required: true, type: 'string' }
     }, query)
     const tokenRaw = ctx.token.verify(data.token)
     const userRaw = await ctx.services.user.getUserByName(tokenRaw.name)

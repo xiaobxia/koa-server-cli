@@ -1,12 +1,12 @@
-function getTag(obj) {
+function getTag (obj) {
   if (obj === null) {
-    return obj + ""
+    return obj + ''
   }
-  return typeof obj === "object" || typeof obj === "function" ?
-    obj.constructor.name.toLowerCase() || "object" :
-    typeof obj
+  return typeof obj === 'object' || typeof obj === 'function'
+    ? obj.constructor.name.toLowerCase() || 'object'
+    : typeof obj
 }
-function isEmpty(value) {
+function isEmpty (value) {
   let empty = false
   if (value) {
     let type = getTag(value)

@@ -92,7 +92,7 @@ module.exports = function (app) {
   // token注册
   content.token.sign = function (data, expiresIn) {
     const tokenConfig = localConfig.server.token
-    return jwt.sign(data, tokenConfig.key, {expiresIn: expiresIn || tokenConfig.expiresIn})
+    return jwt.sign(data, tokenConfig.key, { expiresIn: expiresIn || tokenConfig.expiresIn })
   }
   // token验证
   content.token.verify = function (token) {
@@ -104,24 +104,28 @@ module.exports = function (app) {
   // 创建json文件
   content.createJsonFile = function (fileName, fileData) {
     return fs.ensureFile(fileName).then(() => {
-      return fs.writeJson(fileName, fileData, {spaces: 2})
+      return fs.writeJson(fileName, fileData, { spaces: 2 })
     })
   }
   // 定时任务
   content.schedules = schedules
   // 分页
-  content.paging = function(current, pageSize, defaultValue) {
-    let defaultCurrent = 1,
-      defaultPageSize = 10
+  content.paging = function (current, pageSize, defaultValue) {
+    let defaultCurrent = 1
+
+    let defaultPageSize = 10
     if (defaultValue) {
       defaultCurrent = defaultValue.current || defaultCurrent
       defaultPageSize = defaultValue.pageSize || defaultPageSize
     }
     // 得是个整数
-    let currentT = parseInt(current, 10),
-      pageSizeT = parseInt(pageSize, 10),
-      index = isNaN(currentT) ? defaultCurrent : currentT,
-      size = isNaN(pageSizeT) ? defaultPageSize : pageSizeT
+    let currentT = parseInt(current, 10)
+
+    let pageSizeT = parseInt(pageSize, 10)
+
+    let index = isNaN(currentT) ? defaultCurrent : currentT
+
+    let size = isNaN(pageSizeT) ? defaultPageSize : pageSizeT
     return {
       current: index,
       pageSize: size,

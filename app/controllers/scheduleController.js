@@ -8,10 +8,10 @@ exports.addSchedule = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      name: {required: true, type: 'string'},
-      describe: {required: true, type: 'string'},
-      open: {required: true, type: 'string'},
-      type: {required: true, type: 'string'}
+      name: { required: true, type: 'string' },
+      describe: { required: true, type: 'string' },
+      open: { required: true, type: 'string' },
+      type: { required: true, type: 'string' }
     }, query)
     // 添加任务
     await scheduleService.addSchedule(data)
@@ -31,7 +31,7 @@ exports.deleteSchedule = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      name: {required: true, type: 'string'}
+      name: { required: true, type: 'string' }
     }, query)
     await scheduleService.deleteSchedule(data.name)
     ctx.body = ctx.resuccess()
@@ -50,10 +50,10 @@ exports.updateSchedule = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      name: {required: true, type: 'string'},
-      describe: {required: false, type: 'string'},
-      open: {required: false, type: 'string'},
-      type: {required: false, type: 'string'}
+      name: { required: true, type: 'string' },
+      describe: { required: false, type: 'string' },
+      open: { required: false, type: 'string' },
+      type: { required: false, type: 'string' }
     }, query)
     await scheduleService.updateSchedule(data.name, ctx.queryDataFilter(data, 'name'))
     ctx.body = ctx.resuccess()
@@ -72,8 +72,8 @@ exports.changeScheduleStatus = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      name: {required: true, type: 'string'},
-      open: {required: true, type: 'string'}
+      name: { required: true, type: 'string' },
+      open: { required: true, type: 'string' }
     }, query)
     await scheduleService.updateSchedule(data.name, {
       open: data.open
@@ -105,7 +105,7 @@ exports.getSchedule = async function (ctx) {
   const scheduleService = ctx.services.schedule
   try {
     const data = ctx.validateData({
-      name: {required: true, type: 'string'}
+      name: { required: true, type: 'string' }
     }, query)
     const schedule = await scheduleService.getSchedule(data.name)
     ctx.body = ctx.resuccess(schedule)

@@ -1,1 +1,1 @@
-exports.numberUtil  = require('./number')
+exports.numberUtil = require('./number')

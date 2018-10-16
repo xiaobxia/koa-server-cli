@@ -1,4 +1,4 @@
-const qiniu = require("qiniu")
+const qiniu = require('qiniu')
 /**
  * @param config
  * accessKey

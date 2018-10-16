@@ -8,7 +8,7 @@ const ScheduleProxy = Proxy.Schedule
  * @returns {Promise<*>}
  */
 exports.addSchedule = async function (data) {
-  const schedule = await ScheduleProxy.check({name: data.name})
+  const schedule = await ScheduleProxy.check({ name: data.name })
   if (schedule) {
     throw new Error('定时任务已存在')
   }
@@ -23,11 +23,11 @@ exports.addSchedule = async function (data) {
  * @returns {Promise<*>}
  */
 exports.deleteSchedule = async function (name) {
-  const schedule = await ScheduleProxy.check({name})
+  const schedule = await ScheduleProxy.check({ name })
   if (!schedule) {
     throw new Error('定时任务不存在')
   }
-  return ScheduleProxy.delete({name})
+  return ScheduleProxy.delete({ name })
 }
 
 /**
@@ -37,11 +37,11 @@ exports.deleteSchedule = async function (name) {
  * @returns {Promise<*>}
  */
 exports.updateSchedule = async function (name, data) {
-  const schedule = await ScheduleProxy.check({name})
+  const schedule = await ScheduleProxy.check({ name })
   if (!schedule) {
     throw new Error('定时任务不存在')
   }
-  return ScheduleProxy.update({name}, data)
+  return ScheduleProxy.update({ name }, data)
 }
 
 /**
@@ -50,7 +50,7 @@ exports.updateSchedule = async function (name, data) {
  * @returns {Promise<*>}
  */
 exports.getSchedule = async function (name) {
-  return ScheduleProxy.findOne({name})
+  return ScheduleProxy.findOne({ name })
 }
 
 /**
@@ -78,5 +78,5 @@ exports.getSchedulesByPaging = async function (query, paging) {
     ScheduleProxy.find(queryOption, opt),
     ScheduleProxy.count(queryOption)
   ])
-  return {list: data[0], count: data[1]}
+  return { list: data[0], count: data[1] }
 }

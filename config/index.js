@@ -9,7 +9,7 @@ function resolveRoot (dir) {
 module.exports = {
   root: path.resolve(__dirname, '../'),
   project: {
-    projectName: 'service-base'
+    projectName: 'serviceBase'
   },
   server: {
     port: 3002,
@@ -26,7 +26,7 @@ module.exports = {
   },
   uploadDir: 'uploads',
   // 阿里云2，用于测试
-  db: 'mongodb://47.92.210.171:27017/service-base',
+  db: 'mongodb://47.92.210.171:27017/serviceBase',
   qiniu: {
     zone: 'Zone_z2'
   },

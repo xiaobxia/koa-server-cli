@@ -38,7 +38,7 @@ router.get('/auth/logout', controllers.authController.logout)
 /**
  * 用户模块
  */
-//修改用户密码
+// 修改用户密码
 router.post('/user/newPassword', controllers.userController.newPassword)
 
 /**

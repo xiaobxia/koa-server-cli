@@ -1,5 +1,5 @@
 const reqlib = require('app-root-path').require
-const pug = require('pug');
+const pug = require('pug')
 const localConfig = reqlib('/config')
 const emailConfig = localConfig.email
 

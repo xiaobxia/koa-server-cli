@@ -9,7 +9,7 @@ const UserProxy = Proxy.User
  * @returns {Promise<void>}
  */
 exports.login = async function (account, password) {
-  const user = await UserProxy.findOne({ name: account })
+  const user = await UserProxy.findOne({name: account})
   if (!user) {
     throw new Error('用户不存在')
   }
@@ -18,4 +18,18 @@ exports.login = async function (account, password) {
   } else {
     throw new Error('账户名或密码不正确')
   }
+}
+
+/**
+ * 注册
+ * @param name
+ * @param password
+ * @returns {Promise<*>}
+ */
+exports.register = async function (name, password) {
+  const user = await UserProxy.findOne({name})
+  if (user) {
+    throw new Error('用户名已存在')
+  }
+  return UserProxy.newAndSave({name, password})
 }

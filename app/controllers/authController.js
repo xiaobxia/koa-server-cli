@@ -1,4 +1,39 @@
 /**
+ * 注册
+ * @param ctx
+ * @returns {Promise<void>}
+ */
+exports.register = async function (ctx) {
+  const query = ctx.request.body
+  try {
+    const data = ctx.validateData({
+      name: {required: true, type: 'string'},
+      password: {required: true, type: 'string'},
+      platform: {required: true, type: 'string'}
+    }, query)
+    const userRaw = await ctx.services.auth.register(data.name, data.password)
+    const user = {
+      name: userRaw.name
+    }
+    // 登录在线时间
+    const keepDay = 7
+    const token = ctx.token.sign(user, 60 * 60 * 24 * keepDay)
+    // 添加注册日志
+    ctx.services.log.addLogAudit({
+      log_type: 'register',
+      platform: data.platform,
+      user_id: userRaw._id,
+      user_name: userRaw.name
+    })
+    ctx.body = ctx.resuccess({
+      token,
+      ...user
+    })
+  } catch (err) {
+    ctx.body = ctx.refail(err)
+  }
+}
+/**
  * 登录
  * @param ctx
  * @returns {Promise<void>}

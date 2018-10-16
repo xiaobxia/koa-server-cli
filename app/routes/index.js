@@ -26,6 +26,8 @@ const router = new Router({
 /**
  * 登陆模块
  */
+//注册
+router.post('/auth/register', controllers.authController.register)
 // 登陆
 router.post('/auth/login', controllers.authController.login)
 // 检查登陆

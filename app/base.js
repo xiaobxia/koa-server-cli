@@ -50,7 +50,7 @@ module.exports = function (app) {
       data: data || null
     }
   }
-  //过滤请求字段
+  // 过滤请求字段
   content.queryDataFilter = function (rawData, filterKey) {
     let newData = {}
     for (let key in rawData) {

@@ -9,9 +9,10 @@ exports.register = async function (ctx) {
     const data = ctx.validateData({
       name: {required: true, type: 'string'},
       password: {required: true, type: 'string'},
+      email: {required: true, type: 'string'},
       platform: {required: true, type: 'string'}
     }, query)
-    const userRaw = await ctx.services.auth.register(data.name, data.password)
+    const userRaw = await ctx.services.auth.register(ctx.queryDataFilter(data, 'platform'))
     const user = {
       name: userRaw.name
     }
@@ -33,6 +34,7 @@ exports.register = async function (ctx) {
     ctx.body = ctx.refail(err)
   }
 }
+
 /**
  * 登录
  * @param ctx

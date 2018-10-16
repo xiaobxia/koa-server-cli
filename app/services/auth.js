@@ -26,10 +26,10 @@ exports.login = async function (account, password) {
  * @param password
  * @returns {Promise<*>}
  */
-exports.register = async function (name, password) {
-  const user = await UserProxy.findOne({name})
+exports.register = async function (data) {
+  const user = await UserProxy.findOne({name: data.name})
   if (user) {
     throw new Error('用户名已存在')
   }
-  return UserProxy.newAndSave({name, password})
+  return UserProxy.newAndSave(data)
 }

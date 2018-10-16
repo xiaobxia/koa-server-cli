@@ -26,7 +26,7 @@ const router = new Router({
 /**
  * 登陆模块
  */
-//注册
+// 注册
 router.post('/auth/register', controllers.authController.register)
 // 登陆
 router.post('/auth/login', controllers.authController.login)
@@ -34,6 +34,13 @@ router.post('/auth/login', controllers.authController.login)
 router.get('/auth/checkLogin', controllers.authController.checkLogin)
 // 退出登录
 router.get('/auth/logout', controllers.authController.logout)
+
+/**
+ * 用户模块
+ */
+//修改用户密码
+router.post('/user/newPassword', controllers.userController.newPassword)
+
 /**
  * 文件上传模块
  */

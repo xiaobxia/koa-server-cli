@@ -18,19 +18,21 @@ module.exports = {
       expiresIn: 60 * 60 * 24
     }
   },
+  // 日志配置
   logger: {
     dir: resolveRoot('logs'),
     fileName: 'cheese.log',
     debugLogLevel: 'all',
     productLogLevel: 'info'
   },
+  // 上传配置
   uploadDir: 'uploads',
   // 阿里云2，用于测试
-  db: 'mongodb://47.92.210.171:27017/serviceBase',
+  db: 'mongodb://localhost:27017/serviceBase',
   qiniu: {
     zone: 'Zone_z2'
   },
-  // 只有在debug为false时开启
+  // 邮件配置
   email: {
     senderAccount: {
       host: 'smtp.mxhichina.com',
@@ -39,13 +41,13 @@ module.exports = {
       port: isDev ? 25 : 465,
       // secure: true, // use TLS
       auth: {
-        user: 'chenlingjie@cd121.com',
-        pass: 'CLJclj214'
+        user: '',
+        pass: ''
       },
       ignoreTLS: true
     },
     adminAccount: {
-      user: '673806687@qq.com'
+      user: ''
     },
     formName: 'Xiaobxia'
   }

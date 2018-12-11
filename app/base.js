@@ -101,7 +101,7 @@ module.exports = function (app) {
     const tokenConfig = localConfig.server.token
     return jwt.verify(token, tokenConfig.key)
   }
-
+  // 服务
   content.services = services
   // 创建json文件
   content.createJsonFile = function (fileName, fileData) {
@@ -114,7 +114,6 @@ module.exports = function (app) {
   // 分页
   content.paging = function (current, pageSize, defaultValue) {
     let defaultCurrent = 1
-
     let defaultPageSize = 10
     if (defaultValue) {
       defaultCurrent = defaultValue.current || defaultCurrent
@@ -122,11 +121,8 @@ module.exports = function (app) {
     }
     // 得是个整数
     let currentT = parseInt(current, 10)
-
     let pageSizeT = parseInt(pageSize, 10)
-
     let index = isNaN(currentT) ? defaultCurrent : currentT
-
     let size = isNaN(pageSizeT) ? defaultPageSize : pageSizeT
     return {
       current: index,

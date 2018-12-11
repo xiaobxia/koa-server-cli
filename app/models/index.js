@@ -14,11 +14,22 @@ mongoose.connect(config.db, {
   }
 })
 
+/**
+ * ObjectID ：文档的id
+ * String： 字符串，最常用，必须是utf-8
+ * Boolean：布尔值，true 或者false
+ * Number：数字
+ * Array：数组或者列表，多个值存储到一个键
+ * Mixed：混合
+ * Date：存储当前日期或时间unix时间格式
+ * Buffer：缓冲区
+ */
+
 // 模型
 exports.User = require('./user')
-exports.LogAudit = require('./log_audit')
-exports.Dictionaries = require('./dictionaries')
+exports.LogAudit = require('./logAudit')
+exports.Dictionarie = require('./dictionarie')
 exports.Schedule = require('./schedule')
 
 // 字段
-exports.fields_table = require('./fields_table')
+exports.tableFields = require('./tableFields')

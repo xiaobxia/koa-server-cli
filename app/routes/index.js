@@ -1,8 +1,8 @@
 const Router = require('koa-router')
 const multer = require('koa-multer')
-const controllers = require('../controllers')
 const reqlib = require('app-root-path').require
 const config = reqlib('/config/index')
+const controllers = require('../controllers')
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

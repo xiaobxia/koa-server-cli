@@ -1,6 +1,6 @@
 const reqlib = require('app-root-path').require
-const sendMail = require('../common/email')
 const config = reqlib('/config/index')
+const sendMail = require('../common/email')
 const emailUtil = require('../util/emailUntil')
 
 /**

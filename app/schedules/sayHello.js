@@ -1,8 +1,8 @@
 const schedule = require('node-schedule')
-const scheduleService = require('../services/schedule')
 const reqlib = require('app-root-path').require
-const sendMail = require('../common/email')
 const config = reqlib('/config/index')
+const scheduleService = require('../services/schedule')
+const sendMail = require('../common/email')
 const emailUtil = require('../util/emailUntil')
 /**
  * cron风格的

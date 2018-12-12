@@ -18,3 +18,16 @@ exports.testEmail = async function (ctx) {
     ctx.body = ctx.refail(err)
   }
 }
+
+/**
+ * 测试数据返回
+ * @param ctx
+ * @returns {Promise<void>}
+ */
+exports.testResponse = async function (ctx) {
+  try {
+    ctx.body = ctx.resuccess()
+  } catch (err) {
+    ctx.body = ctx.refail(err)
+  }
+}

@@ -65,5 +65,6 @@ router.get('/schedule/one', controllers.scheduleController.getSchedule)
  * 测试
  */
 router.get('/test/testEmail', controllers.testController.testEmail)
+router.get('/test/testResponse', controllers.testController.testResponse)
 
 module.exports = router

@@ -28,7 +28,7 @@ mongoose.connect(config.db, {
 // 模型
 exports.User = require('./user')
 exports.LogAudit = require('./logAudit')
-exports.Dictionarie = require('./dictionarie')
+exports.Dictionary = require('./dictionary')
 exports.Schedule = require('./schedule')
 
 // 字段

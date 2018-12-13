@@ -1,6 +1,6 @@
 const Proxy = require('../proxy')
 
-const Dictionarie = Proxy.Dictionarie
+const Dictionary = Proxy.Dictionary
 
 /**
  * 通过键获取字典
@@ -8,5 +8,5 @@ const Dictionarie = Proxy.Dictionarie
  * @returns {Promise.<void>}
  */
 exports.getByKey = async function (key) {
-  return Dictionarie.findOne({ key })
+  return Dictionary.findOne({ key })
 }

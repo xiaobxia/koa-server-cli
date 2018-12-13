@@ -14,7 +14,8 @@ exports.newPassword = async function (ctx) {
     const userRaw = await ctx.services.user.getUserByName(tokenRaw.name)
     await ctx.services.user.newPassword({
       name: userRaw.name,
-      ...data
+      old_password: data.oldPassword,
+      new_password: data.newPassword
     })
     ctx.body = ctx.resuccess()
   } catch (err) {

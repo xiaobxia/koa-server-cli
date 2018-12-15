@@ -3,7 +3,7 @@
  */
 module.exports = {
   user: {
-    resBase: ['_id', 'name', 'token']
+    resBase: ['_id', 'name', 'token', 'roles']
   },
   schedule: {
     resBase: ['_id', 'name', 'describe', 'type', 'open']

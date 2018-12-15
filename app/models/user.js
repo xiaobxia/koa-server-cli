@@ -8,6 +8,7 @@ const schema = new Schema({
   email: String,
   mobile: String,
   true_name: String,
+  // 性别
   gender: Number,
   birthday: Date,
   city: String,
@@ -17,6 +18,9 @@ const schema = new Schema({
   job: String,
   introduce: String,
   token: String,
+  // 角色 []
+  roles: Array,
+  last_login_date: Date,
   create_at: {
     type: Date,
     default: Date.now

@@ -16,6 +16,7 @@ const codeMap = {
   '-1': 'fail',
   '200': 'success',
   '401': 'token expired',
+  '403': 'forbidden',
   '500': 'server error',
   '10001': 'params error'
 }
@@ -100,6 +101,34 @@ module.exports = function (app) {
   content.token.verify = function (token) {
     const tokenConfig = localConfig.server.token
     return jwt.verify(token, tokenConfig.key)
+  }
+  // 验证接口权限
+  content.checkPermission = function (rule, rules) {
+    // rules :{include, exclude}
+    if (rules) {
+      let permission = true
+      const include = rules.include
+      const exclude = rules.exclude
+      // 存在于exclude
+      if (exclude && exclude.indexOf(rule) !== -1) {
+        permission = false
+      }
+      // 存在于include
+      if (include && include.indexOf(rule) !== -1) {
+        permission = true
+      }
+      // include有决定权
+      if (permission) {
+        return true
+      } else {
+        let err = new Error()
+        err.code = '403'
+        throw err
+      }
+    } else {
+      // 没有权限要求
+      return true
+    }
   }
   // 服务
   content.services = services

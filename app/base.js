@@ -165,8 +165,9 @@ module.exports = function (app) {
   content.formatFields = function (fields, rawData) {
     let data = {}
     for (let i = 0; i < fields.length; i++) {
-      const key = fields[i]
-      data[key] = rawData[key]
+      const key = fields[i].field
+      let alias = fields[i].alias
+      data[alias || key] = rawData[key]
     }
     return data
   }

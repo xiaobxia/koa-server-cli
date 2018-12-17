@@ -3,15 +3,38 @@
  */
 module.exports = {
   user: {
-    resBase: ['_id', 'name', 'token', 'roles']
+    resBase: [
+      { field: '_id', alias: 'user_id' },
+      { field: 'name' },
+      { field: 'token' },
+      { field: 'roles' }
+    ]
   },
   schedule: {
-    resBase: ['_id', 'name', 'describe', 'type', 'open']
+    resBase: [
+      { field: '_id', alias: 'schedule_id' },
+      { field: 'name' },
+      { field: 'describe' },
+      { field: 'type' },
+      { field: 'open' }
+    ]
   },
   logAudit: {
-    resBase: ['_id', 'log_type', 'user_id', 'user_name', 'platform']
+    resBase: [
+      { field: '_id', alias: 'log_id' },
+      { field: 'log_type' },
+      { field: 'user_id' },
+      { field: 'user_name' },
+      { field: 'platform' }
+    ]
   },
   dictionary: {
-    resBase: ['_id', 'key', 'describe', 'type', 'value']
+    resBase: [
+      { field: '_id', alias: 'dictionary_id' },
+      { field: 'key' },
+      { field: 'describe' },
+      { field: 'type' },
+      { field: 'value' }
+    ]
   }
 }

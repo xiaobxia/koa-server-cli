@@ -16,7 +16,10 @@ module.exports = {
       { field: 'name' },
       { field: 'describe' },
       { field: 'type' },
-      { field: 'open' }
+      { field: 'open',
+        format: function (value) {
+          return value === 'open'
+        } }
     ]
   },
   logAudit: {

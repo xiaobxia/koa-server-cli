@@ -90,8 +90,10 @@ exports.changeScheduleStatus = async function (ctx) {
  * @returns {Promise.<void>}
  */
 exports.getSchedules = async function (ctx) {
+  const tableFieldsSchedule = ctx.tableFields.schedule.resBase
   try {
-    const schedules = await ctx.services.schedule.getSchedules()
+    let schedules = await ctx.services.schedule.getSchedules()
+    schedules = ctx.formatListFields(tableFieldsSchedule, schedules)
     ctx.body = ctx.resuccess({
       list: schedules
     })

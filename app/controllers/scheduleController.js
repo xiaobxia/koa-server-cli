@@ -105,11 +105,13 @@ exports.getSchedules = async function (ctx) {
 exports.getSchedule = async function (ctx) {
   const query = ctx.query
   const scheduleService = ctx.services.schedule
+  const tableFieldsSchedule = ctx.tableFields.schedule.resBase
   try {
     const data = ctx.validateData({
       name: { required: true, type: 'string' }
     }, query)
-    const schedule = await scheduleService.getSchedule(data.name)
+    let schedule = await scheduleService.getSchedule(data.name)
+    schedule = ctx.formatFields(tableFieldsSchedule, schedule)
     ctx.body = ctx.resuccess(schedule)
   } catch (err) {
     ctx.body = ctx.refail(err)

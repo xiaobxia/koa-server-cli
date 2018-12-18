@@ -1,3 +1,7 @@
+const tokenRes = [
+  { field: 'name' },
+  { field: 'roles' }
+]
 /**
  * 注册
  * @param ctx
@@ -13,9 +17,7 @@ exports.register = async function (ctx) {
       platform: { required: true, type: 'string' }
     }, query)
     const userRaw = await ctx.services.auth.register(ctx.queryDataFilter(data, 'platform'))
-    const user = {
-      name: userRaw.name
-    }
+    const user = ctx.formatFields(tokenRes, userRaw)
     // 登录在线时间
     const keepDay = 7
     const token = ctx.token.sign(user, 60 * 60 * 24 * keepDay)
@@ -49,9 +51,7 @@ exports.login = async function (ctx) {
       platform: { required: true, type: 'string' }
     }, query)
     const userRaw = await ctx.services.auth.login(data.account, data.password)
-    const user = {
-      name: userRaw.name
-    }
+    const user = ctx.formatFields(tokenRes, userRaw)
     // 登录在线时间
     const keepDay = 7
     const token = ctx.token.sign(user, 60 * 60 * 24 * keepDay)
@@ -63,8 +63,8 @@ exports.login = async function (ctx) {
       user_name: userRaw.name
     })
     ctx.body = ctx.resuccess({
-      token,
-      ...user
+      ...user,
+      token
     })
   } catch (err) {
     ctx.body = ctx.refail(err)
@@ -81,8 +81,9 @@ exports.checkLogin = async function (ctx) {
   if (token) {
     try {
       const tokenRaw = ctx.token.verify(token)
+      const user = ctx.formatFields(tokenRes, tokenRaw)
       ctx.body = ctx.resuccess({
-        name: tokenRaw.name,
+        ...user,
         isLogin: true,
         token
       })

@@ -3,7 +3,8 @@ const md5 = require('md5')
 
 proxys.User.newAndSave({
   name: 'xiaobxia',
-  password: md5('xiaobxia')
+  password: md5('xiaobxia'),
+  roles: ['admin']
 }).then((doc) => {
   console.log(doc)
 })

@@ -103,21 +103,32 @@ module.exports = function (app) {
     return jwt.verify(token, tokenConfig.key)
   }
   // 验证接口权限
-  content.checkPermission = function (rule, rules) {
+  function checkIn (userRules, ruleList) {
+    for (let i = 0; i < userRules.length; i++) {
+      const userRule = userRules[i]
+      for (let j = 0; j < userRules.length; j++) {
+        const ruleItem = ruleList[j]
+        if (ruleItem === userRule) {
+          return true
+        }
+      }
+    }
+  }
+  content.checkPermission = function (userRules, ruleMap) {
     // rules :{include, exclude}
-    if (rules) {
+    if (ruleMap) {
       let permission = true
-      const include = rules.include
-      const exclude = rules.exclude
+      const include = ruleMap.include
+      const exclude = ruleMap.exclude
+      // 存在于include
+      if (include) {
+        permission = checkIn(userRules, include)
+      }
       // 存在于exclude
-      if (exclude && exclude.indexOf(rule) !== -1) {
+      if (exclude && checkIn(userRules, exclude)) {
         permission = false
       }
-      // 存在于include
-      if (include && include.indexOf(rule) !== -1) {
-        permission = true
-      }
-      // include有决定权
+      // exclude有决定权
       if (permission) {
         return true
       } else {

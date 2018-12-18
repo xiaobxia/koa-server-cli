@@ -23,6 +23,10 @@ const router = new Router({
   prefix: `/${projectName}`
 })
 
+router.get('/', async function (ctx) {
+  ctx.body = 'ok'
+})
+
 /**
  * 登陆模块
  */

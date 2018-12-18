@@ -5,7 +5,6 @@ const bodyParser = require('koa-bodyparser')
 const base = require('./app/base')
 const checkLogin = require('./app/middlewares/checkLogin')
 const error = require('./app/middlewares/error')
-const requestLog = require('./app/middlewares/requestLog')
 const router = require('./app/routes/index')
 const config = require('./config/index')
 
@@ -24,7 +23,7 @@ app.use(cors({
 }))
 // 每个next都需要await
 // 请求日志
-app.use(requestLog)
+// app.use(requestLog)
 // 检查登录中间件
 app.use(checkLogin)
 

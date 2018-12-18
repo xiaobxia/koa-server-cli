@@ -23,6 +23,9 @@ const router = new Router({
   prefix: `/${projectName}`
 })
 
+/**
+ * 端口测试
+ */
 router.get('/', async function (ctx) {
   ctx.body = 'ok'
 })

@@ -1,14 +1,17 @@
 const filterPath = ['/auth', '/schedule', '/test']
 
 module.exports = async function (ctx, next) {
-  const originalUrl = ctx.originalUrl
+  const path = ctx.path
   const projectName = ctx.localConfig.project.projectName
   let ifFilter = false
   for (let k = 0; k < filterPath.length; k++) {
-    if (originalUrl.startsWith(`/${projectName}${filterPath[k]}`)) {
+    if (path.startsWith(`/${projectName}${filterPath[k]}`)) {
       ifFilter = true
       break
     }
+  }
+  if (path === `/${projectName}` || path === `/${projectName}/`) {
+    ifFilter = true
   }
   if (ifFilter) {
     ctx.logger.trace('in filter route')

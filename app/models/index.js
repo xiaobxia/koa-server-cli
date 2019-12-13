@@ -25,6 +25,8 @@ mongoose.connect(config.db, {
  * Buffer：缓冲区
  */
 
+// 每条记录都会有_id,这是默认的索引
+
 // 模型
 exports.User = require('./user')
 exports.LogAudit = require('./logAudit')

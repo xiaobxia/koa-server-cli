@@ -6,6 +6,8 @@ const DictionaryModel = models.Dictionary
  * 基本
  */
 
+const field = { _id: 0, create_at: 0, __v: 0 }
+
 exports.DictionaryModel = DictionaryModel
 
 exports.newAndSave = function (data) {
@@ -23,12 +25,12 @@ exports.update = function (query, data) {
   })
 }
 
-exports.find = function (query, opt) {
-  return DictionaryModel.find(query, {}, opt)
+exports.find = function (query, select, opt) {
+  return DictionaryModel.find(query, select || field, opt)
 }
 
-exports.findOne = function (query) {
-  return DictionaryModel.findOne(query)
+exports.findOne = function (query, select) {
+  return DictionaryModel.findOne(query, select || field)
 }
 
 exports.findOneById = function (id) {

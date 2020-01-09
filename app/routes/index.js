@@ -57,6 +57,7 @@ router.post('/upload/importNumbers', upload.single('numberFile'), controllers.up
  * 文件下载模块
  */
 router.post('/download/exportNumbers', controllers.exportController.exportNumbers)
+router.get('/download/exportXlsx', controllers.exportController.exportXlsx)
 
 /**
  * 定时任务模块

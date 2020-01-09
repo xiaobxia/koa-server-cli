@@ -118,4 +118,3 @@ exports.getSchedule = async function (ctx) {
     ctx.body = ctx.refail(err)
   }
 }
-

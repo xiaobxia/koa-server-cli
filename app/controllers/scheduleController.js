@@ -90,10 +90,8 @@ exports.changeScheduleStatus = async function (ctx) {
  * @returns {Promise.<void>}
  */
 exports.getSchedules = async function (ctx) {
-  const tableFieldsSchedule = ctx.tableFields.schedule.resBase
   try {
     let schedules = await ctx.services.schedule.getSchedules()
-    schedules = ctx.formatListFields(tableFieldsSchedule, schedules)
     ctx.body = ctx.resuccess({
       list: schedules
     })
@@ -102,18 +100,22 @@ exports.getSchedules = async function (ctx) {
   }
 }
 
+/**
+ * 获取单个定时任务
+ * @param ctx
+ * @returns {Promise<void>}
+ */
 exports.getSchedule = async function (ctx) {
   const query = ctx.query
   const scheduleService = ctx.services.schedule
-  const tableFieldsSchedule = ctx.tableFields.schedule.resBase
   try {
     const data = ctx.validateData({
       name: { required: true, type: 'string' }
     }, query)
     let schedule = await scheduleService.getSchedule(data.name)
-    schedule = ctx.formatFields(tableFieldsSchedule, schedule)
     ctx.body = ctx.resuccess(schedule)
   } catch (err) {
     ctx.body = ctx.refail(err)
   }
 }
+

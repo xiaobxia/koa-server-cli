@@ -8,9 +8,6 @@ const LogAuditModel = models.LogAudit
 /**
  * 基本
  */
-
-const field = { _id: 0, create_at: 0, __v: 0 }
-
 exports.LogAuditModel = LogAuditModel
 
 exports.newAndSave = function (data) {
@@ -28,12 +25,12 @@ exports.update = function (query, data) {
   })
 }
 
-exports.find = function (query, select, opt) {
-  return LogAuditModel.find(query, select || field, opt)
+exports.find = function (query, opt) {
+  return LogAuditModel.find(query, {}, opt)
 }
 
-exports.findOne = function (query, select) {
-  return LogAuditModel.findOne(query, select || field)
+exports.findOne = function (query) {
+  return LogAuditModel.findOne(query)
 }
 
 exports.findOneById = function (id) {

@@ -6,8 +6,6 @@ const UserModel = models.User
  * 基本
  */
 
-const field = { _id: 0, create_at: 0, __v: 0 }
-
 exports.UserModel = UserModel
 
 exports.newAndSave = function (data) {
@@ -25,12 +23,12 @@ exports.update = function (query, data) {
   })
 }
 
-exports.find = function (query, select, opt) {
-  return UserModel.find(query, select || field, opt)
+exports.find = function (query, opt) {
+  return UserModel.find(query, {}, opt)
 }
 
-exports.findOne = function (query, select) {
-  return UserModel.findOne(query, select || field)
+exports.findOne = function (query) {
+  return UserModel.findOne(query, {})
 }
 
 exports.findOneById = function (id) {

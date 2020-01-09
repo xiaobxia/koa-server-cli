@@ -27,4 +27,3 @@ exports.toTwoDecimals = function (number) {
 exports.keepFourDecimals = function (number) {
   return Math.round(10000 * number) / 10000
 }
-

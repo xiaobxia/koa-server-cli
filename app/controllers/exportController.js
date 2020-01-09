@@ -33,8 +33,8 @@ exports.exportXlsx = async function (ctx) {
       [true, false, null, 'sheetjs'],
       ['foo', 'bar', new Date('2014-02-19T14:30Z'), '0.3'],
       ['baz', null, 'qux']
-    ];
-    ctx.body = xlsx.build([{name: "mySheetName", data: data}]);
+    ]
+    ctx.body = xlsx.build([{ name: 'mySheetName', data: data }])
   } catch (err) {
     ctx.body = ctx.refail(err)
   }

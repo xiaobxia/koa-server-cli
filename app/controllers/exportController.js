@@ -29,12 +29,12 @@ exports.exportNumbers = async function (ctx) {
 exports.exportXlsx = async function (ctx) {
   try {
     const data = [
-      [1, 2, 3],
-      [true, false, null, 'sheetjs'],
-      ['foo', 'bar', new Date('2014-02-19T14:30Z'), '0.3'],
-      ['baz', null, 'qux']
+      ['姓名', '性别', '年龄'],
+      ['小a', '男', 21],
+      ['小b', '女', 22],
+      ['小c', '男', 23]
     ]
-    ctx.body = xlsx.build([{ name: 'mySheetName', data: data }])
+    ctx.body = xlsx.build([{ name: '人员', data: data }])
   } catch (err) {
     ctx.body = ctx.refail(err)
   }

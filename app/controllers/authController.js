@@ -13,7 +13,8 @@ exports.register = async function (ctx) {
     const userRaw = await ctx.services.auth.register(data)
     const user = {
       name: userRaw.name,
-      password: userRaw.password
+      password: userRaw.password,
+      roles: userRaw.roles
     }
     // 登录在线时间
     const keepDay = 7
@@ -43,7 +44,8 @@ exports.login = async function (ctx) {
     const userRaw = await ctx.services.auth.login(data.account, data.password)
     const user = {
       name: userRaw.name,
-      password: userRaw.password
+      password: userRaw.password,
+      roles: userRaw.roles
     }
     // 登录在线时间
     const keepDay = 20
@@ -69,7 +71,8 @@ exports.checkLogin = async function (ctx) {
       const tokenRaw = ctx.token.verify(token)
       const user = {
         name: tokenRaw.name,
-        password: tokenRaw.password
+        password: tokenRaw.password,
+        roles: tokenRaw.roles
       }
       ctx.body = ctx.resuccess({
         ...user,

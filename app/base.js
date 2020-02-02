@@ -36,7 +36,7 @@ module.exports = function (app) {
       code: 200,
       success: true,
       message: codeMap['200'],
-      data: data || null
+      data: data
     }
   }
   // 失败
@@ -48,7 +48,7 @@ module.exports = function (app) {
       code: parseInt(code),
       success: false,
       message: message || codeMap[code || '-1'] || codeMap['-1'],
-      data: data || null
+      data: data
     }
   }
   // 过滤请求字段

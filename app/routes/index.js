@@ -27,7 +27,7 @@ const router = new Router({
  * 端口测试
  */
 router.get('/', async function (ctx) {
-  ctx.body = 'ok'
+  ctx.body = `ok ${projectName}`
 })
 
 /**

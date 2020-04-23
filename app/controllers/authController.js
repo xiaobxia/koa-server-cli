@@ -108,3 +108,21 @@ exports.logout = async function (ctx) {
     ctx.body = ctx.refail(err)
   }
 }
+
+/**
+ * 发送激活邮件
+ * @param ctx
+ * @returns {Promise<void>}
+ */
+exports.sendRegisterEmail = async function (ctx) {
+  const query = ctx.request.body
+  try {
+    const data = ctx.validateData({
+      email: { required: true, type: 'string' }
+    }, query)
+    await ctx.services.auth.sendRegisterEmail(data.email)
+    ctx.body = ctx.resuccess()
+  } catch (err) {
+    ctx.body = ctx.refail(err)
+  }
+}
